@@ -1,47 +1,50 @@
-// Mail
-// Chiedi all’utente la sua email,
-// controlla che sia nella lista di chi può accedere,
-// stampa un messaggio appropriato sull’esito del controllo.
+const mailPlay = document.getElementById('verifica-mail');
 
-// Gioco dei dadi
-// Generare un numero random da 1 a 6, sia per il giocatore sia per il computer.
-// Stabilire il vincitore, in base a chi ha il numero più alto.  (e se pari?)
+mailPlay.addEventListener('click', function() {
 
-// Prima di partire a scrivere codice poniamoci qualche domanda:
-// Che ci sia un array da qualche parte?
-// Se dobbiamo confrontare qualcosa che “cosa” ci serve?
+    const mailUser = prompt('Inserisci la tua mail');
+    
+    const mailDataBase = [
+        'ciao@gmail.com',
+        'prova21@gmail.com',
+        'pippo45@libero.it',
+        'prova2502@hotmail.com',
+        'pluto@gmail.com'
+    ];
+    
+     for (let i = 0; i < mailDataBase.length; i++) {
+    
+        const element = mailDataBase[i];
+    
+        if (mailUser == element) {
+            alert('Sei autorizzato all\'accesso!');
+        }
+    
+    }
+
+})
 
 
-const mailUser = prompt('Inserisci la tua mail');
+const dadiPlay = document.getElementById('dadi');
 
-const mailDataBase = [
-    'ciao@gmail.com',
-    'prova21@gmail.com',
-    'pippo45@libero.it',
-    'prova2502@hotmail.com',
-    'pluto@gmail.com'
-];
+dadiPlay.addEventListener('click', function() {
 
- for (let i = 0; i < mailDataBase.length; i++) {
+    const randomUser = Math.floor ( Math.random() * 6 + 1 );
+    const numUser = document.getElementById('numero-utente');
+    numUser.innerHTML += `il tuo numero generato è: ${randomUser}`;
 
-    const element = mailDataBase[i];
+    const randomComputer = Math.floor ( Math.random() * 6 + 1 );
+    const numComputer = document.getElementById('numero-computer');
+    numComputer.innerHTML += `il numero generato dal computer è: ${randomComputer}`;
 
-    if (mailUser == element) {
-        alert('Sei autorizzato all\'accesso!');
-    } 
+    let result = document.getElementById('risultato');
+    
+    if (randomUser > randomComputer) {
+        result.innerHTML += 'Hai vinto!'
+    } else if (randomUser < randomComputer) {
+        result.innerHTML += 'Hai perso'
+    } else {
+        result.innerHTML += 'Abbiamo pareggiato'
+    }
 
-}
-
-const randomUser = Math.floor ( Math.random() * 6 + 1 );
-console.log(randomUser);
-
-const randomComputer = Math.floor ( Math.random() * 6 + 1 );
-console.log(randomComputer);
-
-if (randomUser > randomComputer) {
-    alert('Hai vinto!');
-} else if (randomUser < randomComputer) {
-    alert('Hai perso');
-} else {
-    alert('Abbiamo pareggiato');
-}
+})
